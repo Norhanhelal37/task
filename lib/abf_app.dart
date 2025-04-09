@@ -23,26 +23,26 @@ class AbfApp extends StatelessWidget {
         return BlocProvider<AuthCubit>(
           create: (context) => sl<AuthCubit>(),
           child: MaterialApp(
-            initialRoute: SharedPreferencesService().getToken() != null ? AppRoutes.homeBody : "/",
+            locale: Locale("ar"),
+            supportedLocales: [Locale("en"), Locale("ar")],
+            initialRoute: SharedPreferencesService().getToken() != null
+                ? AppRoutes.homeBody
+                : "/",
             onGenerateRoute: AppRoute.generateRoute,
             debugShowCheckedModeBanner: false,
             title: 'First Method',
             theme: ThemeData(
-              fontFamily: 'Almarai-Regular',
+              fontFamily: 'Almarai',
             ),
-            localizationsDelegates: [
+            localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: S.delegate.supportedLocales,
-            locale: const Locale('ar', ''),
           ),
         );
       },
     );
   }
 }
-
-

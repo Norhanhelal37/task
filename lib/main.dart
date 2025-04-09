@@ -9,6 +9,7 @@ void main() async{
   await SharedPreferencesService().initialize();
 
   setupLocator();
+  
   runApp(
     AbfApp(),
   );
